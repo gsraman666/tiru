@@ -1,0 +1,55 @@
+welcome to cloud  welcome to AWS and AZURE
+	new version-2 example for versioning in buckets
+sudo yum update
+sudo service httpd status
+sudo yum install httpd
+sudo service httpd start
+
+vi /var/www/html/index.html
+
+
+<html>
+<body bgcolor=green><h1> welcome to web server-1</h1>
+</body></html>
+
+
+
+sudo apt-get install apache2
+
+use same  key pair inb all regions
+https://stackoverflow.com/questions/10207416/single-keypair-for-all-regions
+
+Change key pair for ec2 instance
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#replacing-lost-key-pair
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#how-to-generate-your-own-key-and-import-it-to-aws
+
+Here is what I did, thanks to Eric Hammond's blog post:
+https://stackoverflow.com/questions/7881469/change-key-pair-for-ec2-instance
+
+
+Benefits of using own ssh keypairs
+https://alestic.com/2010/10/ec2-ssh-keys/
+
+
+Stop the running EC2 instance
+Detach its /dev/xvda1 volume (let's call it volume A) - see here
+Start new t1.micro EC2 instance, using my new key pair. Make sure you create it in the same subnet, otherwise you will have to terminate the instance and create it again. - see here
+Attach volume A to the new micro instance, as /dev/xvdf (or /dev/sdf)
+SSH to the new micro instance and mount volume A to /mnt/tmp
+
+$ sudo mount /dev/xvdf1 /mnt/tmp
+
+Copy ~/.ssh/authorized_keys to /mnt/tmp/home/ubuntu/.ssh/authorized_keys
+
+Logout
+Terminate micro instance
+Detach volume A from it
+Attach volume A back to the main instance as /dev/xvda
+Start the main instance
+Login as before, using your new .pem file
+
+Sivaranjani Hotel17, SIPCOT Industrial Complex,Hosur 635109 
+
+
+
